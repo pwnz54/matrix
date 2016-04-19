@@ -2,16 +2,16 @@
 #include < math.h>
 using namespace std;
 
-class matrix
+class Matrix
 {
 	int n;
 	int m;
 	float* data;
 public:
-	matrix();
-	matrix(int n, int m);
-	matrix (const matrix& A);
-	matrix operator =(matrix &A)
+	Matrix();
+	Matrix(int n, int m);
+	Matrix (const Matrix& A);
+	Matrix operator =(Matrix &A)
 	{
 		delete this->data;
 		this->n = A.n;
@@ -31,9 +31,13 @@ public:
 	{
 		return this->m;
 	}
-	matrix operator* (float c)
+	Matrix operator* (float c)
 	{
-		matrix res;
+		if (failed() == 1)
+		{
+			return *this;
+		}
+		Matrix res;
 		res.n = this->n;
 		res.m = this->m;
 		res.data = new float [res.n*res.m];
@@ -41,11 +45,15 @@ public:
 		{
 			res.data[i] = this->data[i] * c;
 		}
-		return matrix(res);
+		return Matrix(res);
 	}
-	matrix operator* (matrix& A)
+	Matrix operator* (Matrix& A)
 	{
-		matrix res(A.m, n);
+		if (n != A.m || failed() == 1 || A.failed() == 1)
+		{
+			return *this;
+		}
+		Matrix res(A.m, n);
 		double sum = 0;
 		for (int i(0); i < A.m; i++)
 			for (int j(0); j < n; j++)
@@ -57,7 +65,7 @@ public:
 				}
 				res.set(i,j, sum);
 			}
-			return matrix(res);
+			return Matrix(res);
 
 	}
 	float get(int i, int j);
@@ -88,13 +96,13 @@ public:
 			}
 		return o;
 	}
-	matrix GetMinor(int _i, int _j)
+	Matrix GetMinor(int _i, int _j)
 	{
 		if ( n != m)
 		{
 			return *(this);
 		}
-		matrix temp(n-1,m-1);
+		Matrix temp(n-1,m-1);
 		int k=0;
 		int p = 0;
 		for (int i(0); i < n; i++)
@@ -111,11 +119,11 @@ public:
 			}
 			k++;
 		}
-		return matrix(temp);
+		return Matrix(temp);
 	}
 	double determinant()
 	{
-		if(n != m || n==0)
+		if(n != m || failed()== 1)
 			return 0;
 		if(n==1)
 			return data[0];
@@ -124,14 +132,14 @@ public:
 			det = det + powf(-1,i)*data[i]*GetMinor(0,i).determinant();
 		return det;
 	}
-	matrix inverse()
+	Matrix inverse()
 	{
-		if (n != m || n == 0)
+		if (failed() == 1)
 			return *this;
 		double det = determinant();
 		if (det == 0)
-			return (*this);
-		matrix _inverse(n, m);
+			return *this;
+		Matrix _inverse(n, m);
 		for (int i(0); i < n; i++)
 			for (int j(0); j < m; j++)
 			{
@@ -139,31 +147,89 @@ public:
 			}
 
 			_inverse = _inverse*pow(det,-1);
-			return matrix(_inverse);
+			return Matrix(_inverse);
 	}
-	
+	Matrix transpose()
+	{
+		Matrix res;
+		if (this->failed() == 0)
+		{
+			res.n = this->m;
+			res.m = this->n;
+			res.data = new float [res.n*res.m];
+			for (int i(0); i < this->n; i++)
+			{
+				for ( int j(0); j < this->m; j++)
+				{
+					res.set(j,i,get(i,j));
+				}
+			}
+		}
+		return Matrix(res);
+	}
+	Matrix operator + (Matrix& A)
+	{
+		Matrix res;
+		if (this->failed()!=1 && A.failed()!=1 && this->n == A.n && this->m == A.m)
+		{
+			
+			res.n = n;
+			res.m = m;
+			res.data = new float [res.n*res.m];
+			for (int i(0); i < res.n; i++)
+			{
+				for(int j(0); j < res.m; j++)
+					res.set(i,j,this->get(i,j) + A.get(i,j));
+			}
+			
+		}
+		return Matrix (res);
+	}
+	Matrix operator - (Matrix& A)
+	{
+		Matrix res;
+		if (this->failed()!=1 && A.failed()!=1 && this->n == A.n && this->m == A.m)
+		{
+			
+			res.n = n;
+			res.m = m;
+			res.data = new float [res.n*res.m];
+			for (int i(0); i < res.n; i++)
+			{
+				for(int j(0); j < res.m; j++)
+					res.set(i,j,this->get(i,j) - A.get(i,j));
+			}
+			
+		}
+		return Matrix (res);
+	}
+	bool failed()
+	{
+		return (n<=0 || m<=0 || n!=m || data == NULL);
+	}
 };
-void matrix::set(int i, int j, float data)
+
+void Matrix::set(int i, int j, float data)
 {
 	this->data[i*n+j] = data;
 }
-float matrix::get(int i, int j)
+float Matrix::get(int i, int j)
 {
 	return data[i*n+j];
 }
-matrix::matrix()
+Matrix::Matrix()
 {
 	n = 0; 
 	m = 0;
 	data = NULL;
 }
-matrix::matrix(int n, int m)
+Matrix::Matrix(int n, int m)
 {
 	this->n = n;
 	this->m = m;
 	this->data = new float [n*m];
 }
-matrix::matrix(const matrix &A)
+Matrix::Matrix(const Matrix &A)
 {
 	this->n = A.n;
 	this->m = A.m;
@@ -174,4 +240,8 @@ matrix::matrix(const matrix &A)
 	}
 
 }
-
+Matrix* get_init(int n, int m)
+{
+    Matrix* N = new Matrix(m,n);
+    return N;
+}
