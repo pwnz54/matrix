@@ -11,7 +11,7 @@ public:
 	Matrix();
 	Matrix(int n, int m);
 	Matrix (const Matrix& A);
-	Matrix operator =(Matrix &A)
+	Matrix& operator =(const Matrix &A)
 	{
 		delete this->data;
 		this->n = A.n;
@@ -209,11 +209,11 @@ public:
 	}
 };
 
-void Matrix::set(int i, int j, float data)
+void Matrix::set(int i, int j, float data) 
 {
 	this->data[i*n+j] = data;
 }
-float Matrix::get(int i, int j)
+float Matrix::get(int i, int j) const
 {
 	return data[i*n+j];
 }
