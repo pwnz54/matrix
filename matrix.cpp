@@ -213,7 +213,7 @@ void Matrix::set(int i, int j, float data)
 {
 	this->data[i*n+j] = data;
 }
-float Matrix::get(int i, int j) const
+float Matrix::get(int i, int j) 
 {
 	return data[i*n+j];
 }
