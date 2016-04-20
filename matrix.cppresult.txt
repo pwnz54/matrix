@@ -1,6 +1,18 @@
 In file included from cur.cpp:16:0:
-kasheev/matrix.cpp:2:19: fatal error:  math.h: No such file or directory
- #include < math.h>
+kasheev/matrix.cpp: In member function 'Matrix Matrix::inverse()':
+kasheev/matrix.cpp:149:13: error: no match for 'operator=' (operand types are 'Matrix' and 'Matrix')
+    _inverse = _inverse*pow(det,-1);
+             ^
+kasheev/matrix.cpp:149:13: note: candidate is:
+kasheev/matrix.cpp:14:9: note: Matrix Matrix::operator=(Matrix&)
+  Matrix operator =(Matrix &A)
+         ^
+kasheev/matrix.cpp:14:9: note:   no known conversion for argument 1 from 'Matrix' to 'Matrix&'
+cur.cpp: In member function 'virtual void MatrixTest_Reverse_Test::TestBody()':
+cur.cpp:34:19: error: 'class Matrix' has no member named 'reverse'
+     Matrix c = m->reverse();
                    ^
-compilation terminated.
+cur.cpp:47:12: error: 'class Matrix' has no member named 'reverse'
+     c = m->reverse();
+            ^
 ./check.sh: line 24: ./a.out: No such file or directory
