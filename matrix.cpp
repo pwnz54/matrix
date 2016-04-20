@@ -132,7 +132,7 @@ public:
 			det = det + powf(-1,i)*data[i]*GetMinor(0,i).determinant();
 		return det;
 	}
-	Matrix inverse()
+	Matrix reverse()
 	{
 		if (failed() == 1)
 			return *this;
