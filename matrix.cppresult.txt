@@ -1,0 +1,6 @@
+In file included from cur.cpp:16:0:
+kasheev/matrix.cpp:2:19: fatal error:  math.h: No such file or directory
+ #include < math.h>
+                   ^
+compilation terminated.
+./check.sh: line 24: ./a.out: No such file or directory
