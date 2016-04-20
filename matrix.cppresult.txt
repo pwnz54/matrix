@@ -1,8 +1,104 @@
-In file included from cur.cpp:16:0:
-kasheev/matrix.cpp:216:7: error: prototype for 'float Matrix::get(int, int) const' does not match any in class 'Matrix'
- float Matrix::get(int i, int j) const
-       ^
-kasheev/matrix.cpp:71:8: error: candidate is: float Matrix::get(int, int)
-  float get(int i, int j);
-        ^
-./check.sh: line 24: ./a.out: No such file or directory
+[==========] Running 7 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 7 tests from MatrixTest
+[ RUN      ] MatrixTest.GetNM
+[       OK ] MatrixTest.GetNM
+[ RUN      ] MatrixTest.Reverse
+1	0	0	0	
+2	1	0	0	
+3	2	1	0	
+4	3	2	1	
+1	-0	0	-0	
+-2	1	-0	0	
+1	-2	1	-0	
+-0	1	-2	1	
+cur.cpp:50: Failure
+Value of: round(c.get(i,i)+0.5)
+  Actual: 2
+Expected: 1
+cur.cpp:50: Failure
+Value of: round(c.get(i,i)+0.5)
+  Actual: 2
+Expected: 1
+cur.cpp:50: Failure
+Value of: round(c.get(i,i)+0.5)
+  Actual: 2
+Expected: 1
+cur.cpp:50: Failure
+Value of: round(c.get(i,i)+0.5)
+  Actual: 2
+Expected: 1
+[  FAILED  ] MatrixTest.Reverse
+[ RUN      ] MatrixTest.Transpose
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 1
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 2
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 3
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 4
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 5
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 6
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 7
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 8
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 9
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 10
+cur.cpp:76: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(cc++)
+Which is: 11
+[  FAILED  ] MatrixTest.Transpose
+[ RUN      ] MatrixTest.SetGet
+[       OK ] MatrixTest.SetGet
+[ RUN      ] MatrixTest.FailedM
+[       OK ] MatrixTest.FailedM
+[ RUN      ] MatrixTest.Read
+[       OK ] MatrixTest.Read
+[ RUN      ] MatrixTest.Determinant
+[       OK ] MatrixTest.Determinant
+[----------] Global test environment tear-down
+[==========] 7 tests from 1 test case ran.
+[  PASSED  ] 5 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] MatrixTest.Reverse
+[  FAILED  ] MatrixTest.Transpose
+
+ 2 FAILED TESTS
