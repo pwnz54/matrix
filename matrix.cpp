@@ -208,14 +208,13 @@ public:
 		return (n<=0 || m<=0 || n!=m || data == NULL);
 	}
 };
-
-void Matrix::set(int i, int j, float data) 
+void Matrix::set(int i, int j, float data)
 {
-	this->data[i*n+j] = data;
+	this->data[i + j*m] = data;
 }
-float Matrix::get(int i, int j) 
+float Matrix::get(int i, int j)
 {
-	return data[i*n+j];
+	return data[i + j*m];
 }
 Matrix::Matrix()
 {
