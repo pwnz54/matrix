@@ -4,60 +4,19 @@
 [ RUN      ] MatrixTest.GetNM
 [       OK ] MatrixTest.GetNM
 [ RUN      ] MatrixTest.Reverse
-cur.cpp:38: Failure
-Value of: (int)(c.get(i,j)+0.5)
-  Actual: 1
-Expected: (int)(i == j)
-Which is: 0
 1	0	0	0	
 2	1	0	0	
 3	2	1	0	
 4	3	2	1	
--0.121212	0.030303	-0.393939	0.0606061	
-0.212121	-0.121212	0.727273	-0.121212	
--0.0909091	-0.121212	-0.606061	0.030303	
-0.242424	-0.0909091	0.69697	-0.121212	
+1	-0	0	-0	
+-2	1	-0	0	
+1	-2	1	-0	
+-0	1	-2	1	
 index: 0
-cur.cpp:52: Failure
-Value of: round(c.get(i,i))
-  Actual: -0
-Expected: 1
 index: 1
-cur.cpp:52: Failure
-Value of: round(c.get(i,i))
-  Actual: -0
-Expected: 1
 index: 2
-cur.cpp:52: Failure
-Value of: round(c.get(i,i))
-  Actual: -1
-Expected: 1
 index: 3
-cur.cpp:52: Failure
-Value of: round(c.get(i,i))
-  Actual: -0
-Expected: 1
-cur.cpp:55: Failure
-Value of: round(c.get(i+1,i))
-  Actual: 0
-Expected: -2
-cur.cpp:55: Failure
-Value of: round(c.get(i+1,i))
-  Actual: -0
-Expected: -2
-cur.cpp:55: Failure
-Value of: round(c.get(i+1,i))
-  Actual: 1
-Expected: -2
-cur.cpp:57: Failure
-Value of: round(c.get(i+2,i))
-  Actual: -0
-Expected: 1
-cur.cpp:57: Failure
-Value of: round(c.get(i+2,i))
-  Actual: -0
-Expected: 1
-[  FAILED  ] MatrixTest.Reverse
+[       OK ] MatrixTest.Reverse
 [ RUN      ] MatrixTest.Transpose
 cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
@@ -116,7 +75,17 @@ Expected: (int)(cc++)
 Which is: 11
 [  FAILED  ] MatrixTest.Transpose
 [ RUN      ] MatrixTest.SetGet
-[       OK ] MatrixTest.SetGet
+cur.cpp:92: Failure
+Value of: (int)(m->get(j,i)+0.5)
+  Actual: 9
+Expected: (int)(c++)
+Which is: 1
+cur.cpp:92: Failure
+Value of: (int)(m->get(j,i)+0.5)
+  Actual: 10
+Expected: (int)(c++)
+Which is: 2
+[  FAILED  ] MatrixTest.SetGet
 [ RUN      ] MatrixTest.FailedM
 [       OK ] MatrixTest.FailedM
 [ RUN      ] MatrixTest.Read
@@ -127,7 +96,7 @@ Which is: 11
 [==========] 7 tests from 1 test case ran.
 [  PASSED  ] 5 tests.
 [  FAILED  ] 2 tests, listed below:
-[  FAILED  ] MatrixTest.Reverse
 [  FAILED  ] MatrixTest.Transpose
+[  FAILED  ] MatrixTest.SetGet
 
  2 FAILED TESTS
