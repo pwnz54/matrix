@@ -75,17 +75,7 @@ Expected: (int)(cc++)
 Which is: 11
 [  FAILED  ] MatrixTest.Transpose
 [ RUN      ] MatrixTest.SetGet
-cur.cpp:92: Failure
-Value of: (int)(m->get(j,i)+0.5)
-  Actual: 9
-Expected: (int)(c++)
-Which is: 1
-cur.cpp:92: Failure
-Value of: (int)(m->get(j,i)+0.5)
-  Actual: 10
-Expected: (int)(c++)
-Which is: 2
-[  FAILED  ] MatrixTest.SetGet
+[       OK ] MatrixTest.SetGet
 [ RUN      ] MatrixTest.FailedM
 [       OK ] MatrixTest.FailedM
 [ RUN      ] MatrixTest.Read
@@ -94,9 +84,8 @@ Which is: 2
 [       OK ] MatrixTest.Determinant
 [----------] Global test environment tear-down
 [==========] 7 tests from 1 test case ran.
-[  PASSED  ] 5 tests.
-[  FAILED  ] 2 tests, listed below:
+[  PASSED  ] 6 tests.
+[  FAILED  ] 1 test, listed below:
 [  FAILED  ] MatrixTest.Transpose
-[  FAILED  ] MatrixTest.SetGet
 
- 2 FAILED TESTS
+ 1 FAILED TEST
