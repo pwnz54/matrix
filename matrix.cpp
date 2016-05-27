@@ -241,6 +241,6 @@ Matrix::Matrix(const Matrix &A)
 }
 Matrix* get_init(int n, int m)
 {
-    Matrix* N = new Matrix(n,m);
+    Matrix* N = new Matrix(m,n);
     return N;
 }
