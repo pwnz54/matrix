@@ -210,11 +210,11 @@ public:
 };
 void Matrix::set(int i, int j, float data)
 {
-	this->data[i + j*n] = data;
+	this->data[i*n + j] = data;
 }
 float Matrix::get(int i, int j)
 {
-	return data[i + j*n];
+	return data[i*n + j];
 }
 Matrix::Matrix()
 {
