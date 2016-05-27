@@ -162,7 +162,7 @@ public:
 				for ( int j(0); j < this->m; j++)
 				{
 					res.set(j,i,get(i,j));
-					res.data[i*m]
+					
 				}
 			}
 		}
