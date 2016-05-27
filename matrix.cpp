@@ -210,17 +210,17 @@ public:
 };
 void Matrix::set(int i, int j, float data)
 {
-	this->data[i*n + j] = data;
+	this->data[i + j*n] = data;
 }
 float Matrix::get(int i, int j)
 {
-	return data[i*n + j];
+	return data[i + j*n];
 }
 Matrix::Matrix()
 {
 	n = 0; 
 	m = 0;
-	data = NULL;
+	data = new float [n*m];
 }
 Matrix::Matrix(int n, int m)
 {
@@ -241,6 +241,6 @@ Matrix::Matrix(const Matrix &A)
 }
 Matrix* get_init(int n, int m)
 {
-    Matrix* N = new Matrix(m,n);
+    Matrix* N = new Matrix(n,m);
     return N;
 }
